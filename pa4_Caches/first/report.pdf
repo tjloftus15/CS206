@@ -1,0 +1,9 @@
+- In my program, I utlilize a two dimensional struct matrix (number of sets x number of blocks), which serves as the cache. the struct has fields tag, valid bit, and fifo value. The first dimension is treated as a hash table. I do so by using the function index bits%number of sets to find the first index. The second index is found by searching the tags stored in each block in the set. the fifo value makes fifo possible. I utilize this by assigning a value, fifoNum, to this field when i assign a new tag to a position in the cache. after assigning, I then increment fifoNum. I have a method that is used to find the block to be evicted, findVictim(), when necessary, by just comparing the fifo values of a set's blocks.
+
+- After using the prefetcher, it becomes clear that compared to the no prefetch version, the reads increase slightly, while the hits increase much more, and the misses are reduced significantly as well. The reason why the reads are higher is because everytime there is a miss in no prefetch, you must read only once to get the desired block into the cache. But, in the prefetch version, upon miss, you must read in the block you were looking for, and its adjacent block, resulting in 2 reads instead of just one. Although this seems counter productive, it ends up being helpful, because it increases locaility in the cache, resulting in more hits and less misses.
+
+
+
+- I would like to take this moment to say that I did the LRU extra credit. 
+
+Thank you
